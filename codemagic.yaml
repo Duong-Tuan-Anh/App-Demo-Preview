@@ -2,7 +2,8 @@ workflows:
   app_preview:
     name: demo_preview
     environment:
-      # ios_signing:
+      flutter: 3.27.1
+      # ios_signing:  
       #   distribution_type: ad_hoc
       #   bundle_identifier: com.example.demoPreview
       groups:
@@ -18,8 +19,10 @@ workflows:
     scripts:
       # If you are not using Flutter, you need to add the build scripts for your
       # platform.
+      - name: Install dependencies
+        script: flutter pub get
       - name: Build APK (Android)
-        script: flutter build apk
+        script: flutter build apk --release
       # - name: Build macOS
       #   script: flutter build macos
       # - name: Build IPA (iOS)
