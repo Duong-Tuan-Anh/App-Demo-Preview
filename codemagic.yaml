@@ -2,9 +2,9 @@ workflows:
   app_preview:
     name: demo_preview
     environment:
-      ios_signing:
-        distribution_type: ad_hoc
-        bundle_identifier: com.example.demoPreview
+      # ios_signing:
+      #   distribution_type: ad_hoc
+      #   bundle_identifier: com.example.demoPreview
       groups:
         # Adding environment group "github" which includes the GITHUB_PAT
         # variable. GITHUB_PAT is required for posting / editing comments on the pull request
@@ -20,17 +20,17 @@ workflows:
       # platform.
       - name: Build APK (Android)
         script: flutter build apk
-      - name: Build macOS
-        script: flutter build macos
-      - name: Build IPA (iOS)
-        script: |
-          flutter build ipa \
-            --export-options-plist=/Users/builder/export_options.plist
+      # - name: Build macOS
+      #   script: flutter build macos
+      # - name: Build IPA (iOS)
+      #   script: |
+      #     flutter build ipa \
+      #       --export-options-plist=/Users/builder/export_options.plist
     # Adding artifacts for Android, iOS, and macOS builds.
     artifacts:
       - build/**/outputs/apk/**/*.apk
-      - build/ios/ipa/*.ipa
-      - build/macos/Build/Products/Release/*.app
+      # - build/ios/ipa/*.ipa
+      # - build/macos/Build/Products/Release/*.app
     publishing:
       scripts:
         - name: Post App Preview
